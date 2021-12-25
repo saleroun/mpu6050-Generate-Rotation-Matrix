@@ -1,4 +1,4 @@
-# mpu6050-Generate-Rotation-Matrix
+# imu-Generate-Rotation-Matrix
 
 This file help you to set up your mpu in every angle you want after that based on gravity (z) find right angle, and show you the right coordinate
 both header files, you can find in the https://github.com/jrowberg/i2cdevlib
