@@ -1,16 +1,18 @@
-# imu-Rotation Matrix Creation
-
-You usually have to align your sensor with your inertial reference frame to be able to interpret the data.
-you can find both header files at https://github.com/jrowberg/i2cdevlib
-The way to do this is with rotation matrices whose individual elements are populated with trigonometric functions or quaternions. Quaternions are preferred because they require less computation by an MCU.
-this matrix captures raw data from the initial mpu situation, after calculation run final-data().
-this matrix not only supports mpu6050 but after some changes you can use it in other types of imu.
-Whichever sensor you use, you must calibrate the device according to the manufacturer's datasheet prior to every use. Sometimes that calibration requires an external EEPROM.
-
+# IMU Rotation Matrix Creation
+The IMU Rotation Matrix Creation is a library that helps align your sensor with the inertial reference frame to interpret the data accurately. This library provides rotation matrices, which are populated with trigonometric functions or quaternions, to perform the necessary rotations.
+Installation
+To use this library, you need to include the header files from the I2Cdevlib repository. Make sure to download and include them in your project.
+# Usage
+Calibrate the sensor: Before using the IMU, it is essential to calibrate it according to the manufacturer's datasheet. This step ensures accurate measurements and can sometimes involve using an external EEPROM for calibration.
+Initialize the IMU: Set up the IMU sensor and configure it according to your specific hardware requirements.
+Populate the rotation matrix: Use the provided functions to populate the rotation matrix with raw data from the initial MPU situation. If you are using a different type of IMU, you may need to make some modifications to the code.
+Run the final-data() function: After populating the rotation matrix, run the final-data() function to process the data and make it ready for interpretation.
 # Rotation Matrices
-Moving a vector around in three-dimensional space can be a complicated affair. One common technique uses sequential rotations around fixed axes to rotate vectors.
-The easiest way to reorient your vectors in a single rotation is with a rotation matrix. A 3×3 matrix contains all of the necessary information to move a vector in a single rotation without using trigonometry.
-You can learn more about that technique by searching for “Euler angles” or by reading my previous article on quaternions.
-In the gifs below, you can see sequential rotations for yaw, pitch, and roll, each of which requires a specific orientation of axes for proper function. Whenever a single movement can be described by multiple rotations, gimbal-lock is possible.
-A three-dimensional vector that lies on the unit sphere can be rotated into any new position with a single rotation about a fixed axis. It is much faster and only requires the basic calculations of adding, subtracting, dividing, and multiplying.
- 
+Moving a vector in three-dimensional space can be complex. One common technique involves sequential rotations around fixed axes using rotation matrices. A rotation matrix is a 3x3 matrix that contains all the necessary information to move a vector in a single rotation without using trigonometry.
+By using rotation matrices, you can reorient vectors in a single rotation, such as yaw, pitch, and roll. Each rotation requires a specific orientation of axes for proper function. It is important to note that when a single movement can be described by multiple rotations, gimbal-lock is possible.
+Quaternions are also a preferred option as they require less computation by the MCU. They offer a faster and simpler way to rotate a three-dimensional vector around a fixed axis, using basic calculations of addition, subtraction, division, and multiplication.
+# Contributing
+Contributions to this library are welcome! If you find any issues, have suggestions, or want to add new features, please feel free to open an issue or submit a pull request. We appreciate your help in improving the IMU Rotation Matrix Creation.
+# License
+This library is licensed under the MIT License. See the LICENSE file for more details.
+Disclaimer: This library is not affiliated with or endorsed by the I2Cdevlib repository or any specific IMU manufacturer.
